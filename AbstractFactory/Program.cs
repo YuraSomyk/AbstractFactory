@@ -21,7 +21,7 @@ namespace AbstractFactory {
         static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((_, services) =>
-                    services.AddTransient<ITransientOperation>()
+                    services.AddTransient<ITransientOperation, DefaultOperation>()
                             .AddScoped<IScopedOperation, DefaultOperation>()
                             .AddSingleton<ISingletonOperation, DefaultOperation>()
                             .AddTransient<OperationLogger>());
