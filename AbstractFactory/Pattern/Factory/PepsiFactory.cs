@@ -9,5 +9,9 @@
         public override Bottle.AbstractBottle CreateBottle() {
             return new Bottle.PepsiBottle();
         }
+
+        public override Cover.AbstractCover CreateCover() {
+            return new Cover.PepsiCover();
+        }
     }
 }

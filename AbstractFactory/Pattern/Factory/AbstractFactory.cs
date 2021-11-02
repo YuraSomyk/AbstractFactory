@@ -5,5 +5,7 @@
         public abstract Water.AbstractWater CreateWater();
 
         public abstract Bottle.AbstractBottle CreateBottle();
+
+        public abstract Cover.AbstractCover CreateCover();
     }
 }
