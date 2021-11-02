@@ -9,7 +9,11 @@ namespace AbstractFactory {
 
             Client client = null;
 
-            Console.WriteLine("Hello AF!");
+            client = new Client(new Pattern.Factory.CocaColaFactory());
+            client.Run();
+
+
+            Console.ReadKey();
         }
     }
 }
