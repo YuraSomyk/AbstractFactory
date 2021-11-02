@@ -1,19 +1,21 @@
-﻿using System;
+﻿using AbstractFactory.Logger;
 
 namespace AbstractFactory.Pattern.Bottle {
 
     class CocaColaBottle: AbstractBottle {
 
-        public CocaColaBottle() { 
+        private ILogger _logger;
 
+        public CocaColaBottle(ILogger logger) {
+            _logger = logger;
         }
 
         public override void InteractWater(Water.AbstractWater water) {
-            Console.WriteLine(this + " interacts with " + water);
+            _logger.Print(this + " interacts with " + water);
         }
 
         public override void InteractCover(Cover.AbstractCover cover) {
-            Console.WriteLine(this + " interacts with " + cover);
+            _logger.Print(this + " interacts with " + cover);
         }
     }
 }
