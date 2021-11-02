@@ -4,6 +4,10 @@ namespace AbstractFactory.Pattern.Bottle {
 
     class CocaColaBottle: AbstractBottle {
 
+        public CocaColaBottle() { 
+
+        }
+
         public override void InteractWater(Water.AbstractWater water) {
             Console.WriteLine(this + " interacts with " + water);
         }

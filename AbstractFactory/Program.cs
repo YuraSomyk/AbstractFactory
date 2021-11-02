@@ -1,21 +1,30 @@
-﻿using AbstractFactory.Pattern;
-using System;
+﻿using AbstractFactory.DependencyInjection;
+using AbstractFactory.DependencyInjection.Logger;
+using AbstractFactory.DependencyInjection.Operation.Scoped;
+using AbstractFactory.DependencyInjection.Operation.Singleton;
+using AbstractFactory.DependencyInjection.Operation.Transient;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System.Threading.Tasks;
 
 namespace AbstractFactory {
 
     class Program {
 
-        static void Main(string[] args) {
+        static Task Main(string[] args) {
 
-            Client client = null;
+            using IHost host = CreateHostBuilder(args).Build();
 
-            client = new Client(new Pattern.Factory.CocaColaFactory());
-            client.Run();
-
-            client = new Client(new Pattern.Factory.PepsiFactory());
-            client.Run();
-
-            Console.ReadKey();
+            return host.RunAsync();
         }
+
+        static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureServices((_, services) =>
+                    services.AddTransient<ITransientOperation>()
+                            .AddScoped<IScopedOperation, DefaultOperation>()
+                            .AddSingleton<ISingletonOperation, DefaultOperation>()
+                            .AddTransient<OperationLogger>());
+
     }
 }
