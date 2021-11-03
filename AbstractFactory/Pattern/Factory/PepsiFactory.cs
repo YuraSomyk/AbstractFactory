@@ -4,10 +4,8 @@ namespace AbstractFactory.Pattern.Factory {
 
     class PepsiFactory: AbstractFactory {
 
-        private ILogger _logger;
-
-        public PepsiFactory(ILogger logger) : base(logger) {
-            logger = _logger;
+        public PepsiFactory(ILogger logger) :base(logger) {
+            _logger = logger;
         }
 
         public override Water.AbstractWater CreateWater() {

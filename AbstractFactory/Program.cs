@@ -1,5 +1,6 @@
 ﻿using AbstractFactory.Logger;
 using AbstractFactory.Logger.Print;
+using AbstractFactory.Logger.Print.Console;
 using AbstractFactory.Logger.Print.Printer;
 using AbstractFactory.Pattern;
 using AbstractFactory.Pattern.Factory;
@@ -14,7 +15,7 @@ namespace AbstractFactory {
             var serviceProvider = new ServiceCollection()
                 .AddLogging()
                 .AddSingleton<ILogger, Logger.Logger>()
-                .AddSingleton<IPrint, PrinterPrint>()
+                .AddTransient<IPrint, PrinterPrint>()
                 .BuildServiceProvider();
 
             Client client = null;

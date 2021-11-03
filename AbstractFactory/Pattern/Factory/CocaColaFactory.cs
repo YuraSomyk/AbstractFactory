@@ -5,7 +5,7 @@ namespace AbstractFactory.Pattern.Factory {
     class CocaColaFactory : AbstractFactory {
 
         public CocaColaFactory(ILogger logger) :base(logger) {
-            logger = _logger;
+            _logger = logger;
         }
 
         public override Water.AbstractWater CreateWater()  {
